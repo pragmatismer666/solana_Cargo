@@ -1,0 +1,14 @@
+[package]
+name = "RevGold"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+solana-program = "1.18.17"
+anchor-lang = "0.30.0"
+anchor-spl = "0.30.0"
+
+[lib]
+name = "RevGold"
+path = "src/RevGold.rs"
+crate-type = ["cdylib", "lib"]
