@@ -20,9 +20,10 @@
         solana balance --url https://api.devnet.solana.com
 
 =============== Initial Env
-1. cargo new --lib solana_program
+1. cargo new --lib solana_Cargo
+2. cd solana_Cargo
 2. solana-keygen new --no-bip39-passphrase -o ./wallets/id.json
-3. solana address -k ./wallets/id.json
 4. solana config set --url https://api.devnet.solana.com -k ./wallets/id.json
 5. cargo build-bpf --manifest-path=./Cargo.toml --bpf-out-dir=dist/program
-6. solana program deploy dist/program/solana_program.so
+6. solana program deploy dist/program/rev_gold.so
+7. - Necessary balance = 4.01788904 - 2.1183252 = 1.9
