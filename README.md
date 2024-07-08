@@ -26,4 +26,8 @@
 4. solana config set --url https://api.devnet.solana.com -k ./wallets/id.json
 5. cargo build-bpf --manifest-path=./Cargo.toml --bpf-out-dir=dist/program
 6. solana program deploy dist/program/rev_gold.so
-7. - Necessary balance = 4.01788904 - 2.1183252 = 1.9
+8. solana program set-upgrade-authority dist/program/rev_gold.so \
+    --new-upgrade-authority wallets/id.json \
+    --keypair wallets/id5.json
+9. solana program -upgrade-authority dist/program/rev_gold.so --new-upgrade-authority EsHPwH4UJLHeKP3QiVwwweAFU6nnqLt9CnSBSuZN8Tsc --keypair wallets/id5.json
+- Necessary balance = 4.01788904 - 2.1183252 = 1.9

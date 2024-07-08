@@ -1,8 +1,10 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Token, TokenAccount, Transfer};
+use serde_json::Value;
 use std::collections::HashMap;
+use std::str::FromStr;
 
-declare_id!("Fg6PaFhzVNhYgo5L5G5LsWKCukb8RNrFBLxe93B6tv1M");
+declare_id!("6x5vb95URHYZg6me35EjcFR1M5sqpybKoFBdCxkYoS7C");
 
 #[program]
 mod rev_gold {
@@ -12,6 +14,12 @@ mod rev_gold {
         let state = &mut ctx.accounts.state;
         state.owner = *ctx.accounts.owner.key;
         state.withdraw_fee = withdraw_fee;
+
+        let config: Value = serde_json::from_str("../config.js").expect("Invalid config file");
+        let owner_str = config["OWNER"].as_str().expect("OWNER field missing in config");
+        let owner_pubkey = Pubkey::from_str(owner_str).expect("Invalid OWNER pubkey");
+        state.owner = owner_pubkey;
+
         Ok(())
     }
 
